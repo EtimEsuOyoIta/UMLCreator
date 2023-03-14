@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>UML Creator - Class Diagram Samples</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="UML Creator is a tool for creating UML diagrams.">
+    <meta name="author" content="Etim Esu Oyo-Ita">
+    <meta property="og:url" content="">
+    <meta property="og:title" content="UML Creator">
+    <meta property="og:description" content="UML Creator is a tool for creating UML diagrams.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@etimoyoita">
+    <meta name="twitter:creator" content="@etimoyoita">
+    <link rel="shortcut icon" href="../img/favicons/favicon.ico">
+    <link rel="icon" href="../img/favicons/favicon.png">
+    <link rel="stylesheet" href="dist/spectre/spectre.min.css">
+    <link rel="stylesheet" href="dist/spectre/spectre-icons.min.css">
+    <link rel="stylesheet" href="dist/spectre/spectre-exp.min.css">
+    <link rel="stylesheet" href="dist/spectre/docs.min.css">
+
+    <link rel="stylesheet" href="dist/main.css">
+</head>
+<body>
+
+<main>
+    <div class="docs-container off-canvas off-canvas-sidebar-show">
+        <div class="docs-sidebar off-canvas-sidebar" id="sidebar">
+            <div class="docs-brand">
+                <a class="docs-logo" href="index.html"><h2>UML Creator</h2></a>
+            </div>
+            <div class="docs-nav">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a href="index.html">Draw</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">Diagram Samples</a>
+                    </li>
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a href="activity.html">Activity Diagrams</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="class.html">Class Diagrams</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="usecase.html">Use Case Diagrams</a>
+                        </li>
+                    </ul>
+                </ul>
+            </div>
+        </div><a class="off-canvas-overlay" href="#close"></a>
+        <div class="off-canvas-content">
+            <div class="docs-content" id="content">
+                <div class="container" id="getting-started">
+                    <h2 class="s-title">Use Case Diagram Samples<a class="anchor" href="#usecase-diagrams" aria-hidden="true">#</a></h2>
+
+                    <p>
+                        <a class="btn btn-primary btn-lg" href="index.html?d=usecase">Draw Your Own Use Case Diagram</a>
+                    </p>
+                    <table class="table">
+                        <tbody>
+
+                        <tr>
+                            <td>
+                                <p>Actor</p>
+                            </td>
+                            <td>
+                                <p>
+                                    <code>[App User]</code>
+                                </p>
+                            </td>
+                            <td>
+                                <img src="dist/img/samples/usecase/actor.png"/>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td>
+                                <p>Actor and Use Case</p>
+                            </td>
+                            <td>
+                                <p>
+                                    <code>[App User]-(Login)</code>
+                                </p>
+                            </td>
+                            <td>
+                                <img src="dist/img/samples/usecase/actor-use-case.png"/>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td>
+                                <p>Notes</p>
+                            </td>
+                            <td>
+                                <p>
+                                    <code>[App User]-(Login)<br />[App User]-(note: User can be registered or not{bg:beige})</code>
+                                </p>
+                            </td>
+                            <td>
+                                <img src="dist/img/samples/usecase/notes.png"/>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td>
+                                <p>Many Use Cases</p>
+                            </td>
+                            <td>
+                                <p>
+                                    <code>[App User]-(Login)<br />[App User]-(Logout)</code>
+                                </p>
+                            </td>
+                            <td>
+                                <img src="dist/img/samples/usecase/many-use-cases.png"/>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td>
+                                <p>Actor Inheritance</p>
+                            </td>
+                            <td>
+                                <p>
+                                    <code>[Cms Admin]^[User]</code>
+                                </p>
+                            </td>
+                            <td>
+                                <img src="dist/img/samples/usecase/actor-inheritance.png"/>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td>
+                                <p>Multiple Actors And Inheritance</p>
+                            </td>
+                            <td>
+                                <p>
+                                    <code>[Cms Admin]^[User]<br />[App User]^[User]<br />[Agent]^[User]</code>
+                                </p>
+                            </td>
+                            <td>
+                                <img src="dist/img/samples/usecase/multiple-actor-inheritance.png"/>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <p>&lt;&lt;Extends&gt;&gt;</p>
+                            </td>
+                            <td>
+                                <p>
+                                    <code>(Login)&lt;(Register)<br />(Login)&lt;(Request Password Reset)</code>
+                                </p>
+                            </td>
+                            <td>
+                                <img src="dist/img/samples/usecase/extends.png"/>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td>
+                                <p>&lt;&lt;Includes&gt;&gt;</p>
+                            </td>
+                            <td>
+                                <p>
+                                    <code>(Register)&gt;(Confirm Email)</code>
+                                </p>
+                            </td>
+                            <td>
+                                <img src="dist/img/samples/usecase/includes.png"/>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td>
+                                <p>Meaty Example</p>
+                            </td>
+                            <td>
+                                <p>
+                                    <code>(note: figure 1.2{bg:beige})<br />[App User]-(Login)<br />[Site Maintainer]-(Add User)<br />(Add User)&lt;(Add Company)<br />[Site Maintainer]-(Upload Docs)<br/>(Upload Docs)&lt;(Manage Folders)<br/>[App User]-(Upload Docs)<br />[App User]-(Full Text Search Docs)<br />(Full Text Search Docs)&gt;(Preview Doc)<br/>(Full Text Search Docs)&gt;(Download Docs)<br />[App User]-(Browse Docs)<br />(Browse Docs)&gt;(Preview Doc)<br />(Download Docs)<br />[Site Maintainer]-(Post New Event To The Web Site)<br />[App User]-(View Events)</code>
+                                </p>
+                            </td>
+                            <td>
+                                <img src="dist/img/samples/usecase/meaty.png"/>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+</body>
+</html>

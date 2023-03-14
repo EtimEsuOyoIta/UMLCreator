@@ -1,0 +1,36 @@
+{
+  "name": "yuml-diagram",
+  "displayName": "yUML",
+  "description": "UML diagramming package based on the yUML syntax",
+  "version": "1.2.0",
+  "publisher": "Jaime Olivares",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaime-olivares/yuml"
+  },
+  "bugs": {
+    "url": "https://github.com/jaime-olivares/yuml/issues",
+    "email": "jaime_olivares@hotmail.com"
+  },
+  "homepage": "https://github.com/jaime-olivares/yuml/blob/master/README.md",
+  "engines": {
+    "node": ">=6.5.0"
+  },
+  "keywords": [
+    "yuml",
+    "uml",
+    "diagram",
+    "sequence",
+    "svg"
+  ],
+  "main": "./index.js",
+  "runkitExampleFilename": "./test/npm_test.js",
+  "devDependencies": {
+    "browserify": "^16.2.3",
+    "uglifyify": "^5.0.1"
+  },
+  "scripts": {
+    "browserify": "browserify index.js --standalone yuml_diagram  -g uglifyify -o ./dist/yuml-diagram.min.js"
+  }
+}

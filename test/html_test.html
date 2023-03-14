@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <style>
+            #main {
+                margin: 1em;
+                display: grid;
+                column-gap: 1em;
+            }
+
+            #main > * {
+                width: calc((100% - 1em) / 2);
+            }
+
+
+        </style>
+        <script src="../dist/yuml-diagram.min.js"></script>
+        <script>
+            var dtype = 123;
+
+            function switchType() {
+                dtype = document.getElementById('diagramtype').value;
+                console.log(dtype);
+            }
+
+            function loadSvg()
+            {
+                var yumlText = "// {type:"+ dtype +"}\n" + document.getElementById("yuml").value;
+
+                var yuml  = new yuml_diagram();
+                var svg = yuml.processYumlDocument(yumlText, false);
+                document.getElementById("diag").innerHTML = svg;
+            }
+        </script>
+    </head>
+
+    <body>
+        <nav>
+            <ul>
+                <li><a href="html_test.html">Diagrams</a></li>
+                <li><a href="../class.html">Docs</a></li>
+            </ul>
+        </nav>
+    	<main id="main">
+    		<div id="form">
+                <select id="diagramtype" onchange="switchType();">
+                    <option value="">Select Diagram Type</option>
+                    <option value="class">Class Diagram</option>
+                    <option value="activity">Activity Diagram</option>
+                    <option value="usecase">Use Case Diagram</option>
+                </select>
+                <textarea id="yuml"  rows="15" cols="80"></textarea>
+                <button data-type="" style="display:block;" onclick="loadSvg();">Update</button>
+    		</div>
+	        <div id="diag"></div>
+    	</main>
+    </body>
+</html>

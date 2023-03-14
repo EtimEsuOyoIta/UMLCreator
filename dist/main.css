@@ -1,0 +1,24 @@
+body {
+    overflow-x: auto;
+}
+
+#download {
+    display: none;
+}
+
+code {
+    padding: 0.1rem 0;
+}
+
+table td {
+    text-align: left;
+    vertical-align: top;
+}
+
+td:nth-child(2) {
+    width: calc(40%);
+}
+
+table td > img {
+    margin: auto;
+}

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>UML Creator - Class Diagram Samples</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="UML Creator is a tool for creating UML diagrams.">
+    <meta name="author" content="Etim Esu Oyo-Ita">
+    <meta property="og:url" content="">
+    <meta property="og:title" content="UML Creator">
+    <meta property="og:description" content="UML Creator is a tool for creating UML diagrams.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@etimoyoita">
+    <meta name="twitter:creator" content="@etimoyoita">
+    <link rel="shortcut icon" href="../img/favicons/favicon.ico">
+    <link rel="icon" href="../img/favicons/favicon.png">
+    <link rel="stylesheet" href="dist/spectre/spectre.min.css">
+    <link rel="stylesheet" href="dist/spectre/spectre-icons.min.css">
+    <link rel="stylesheet" href="dist/spectre/spectre-exp.min.css">
+    <link rel="stylesheet" href="dist/spectre/docs.min.css">
+
+    <link rel="stylesheet" href="dist/main.css">
+</head>
+<body>
+
+<main>
+    <div class="docs-container off-canvas off-canvas-sidebar-show">
+        <div class="docs-sidebar off-canvas-sidebar" id="sidebar">
+            <div class="docs-brand">
+                <a class="docs-logo" href="index.html"><h2>UML Creator</h2></a>
+            </div>
+            <div class="docs-nav">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a href="index.html">Draw</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">Diagram Samples</a>
+                    </li>
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a href="activity.html">Activity Diagrams</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="class.html">Class Diagrams</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="usecase.html">Use Case Diagrams</a>
+                        </li>
+                    </ul>
+                </ul>
+            </div>
+        </div><a class="off-canvas-overlay" href="#close"></a>
+        <div class="off-canvas-content">
+            <div class="docs-content" id="content">
+                <div class="container" id="getting-started">
+                    <h2 class="s-title">Class Diagram Samples<a class="anchor" href="#class-diagrams" aria-hidden="true">#</a></h2>
+
+                    <p>
+                        <a class="btn btn-primary btn-lg" href="index.html?d=class">Draw Your Own Class Diagram</a>
+                    </p>
+
+                    <table class="table table-hover">
+                        <tbody>
+                        <tr>
+                            <td><p>Singular Class<p></td>
+                            <td>
+                                <p>
+                                    <code>[Customer]</code>
+                                <p>
+                            </td>
+                            <td>
+                                <img src="dist/img/samples/class/singular-class.png" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Simple Association<p>
+                            </td>
+                            <td>
+                                <p>
+                                    <code>[Customer]-&gt;[Address]</code>
+                                <p>
+                            </td>
+                            <td>
+                                <img src="dist/img/samples/class/simple-association.png" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Chaining Simple Associations<p>
+                            </td>
+                            <td>
+                                <p>
+                                    <code>[Customer]-&gt;[Address]<br />[Address]-&gt;[AddressLine]</code>
+                                <p>
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Cardinality<p>
+                            </td>
+                            <td>
+                                <p>
+                                    <code>[Customer]1-0..*[Address]</code>
+                                <p>
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Directional Association<p>
+                            </td>
+                            <td>
+                                <p>
+                                    <code>[Order]-invoicing &gt;[InvoicingAddress]<br />[Order]-shipping &gt;[ShippingAddress]</code>
+                                <p>
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Splash of Colour And UTF-8<p>
+                            </td>
+                            <td>
+                                <p>
+                                    <code>[✚ Thing{bg:white}]❶- ✱&gt;[Order {bg:green}]</code>
+                                <p>
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Aggregation<p>
+                            </td>
+                            <td>
+                                <p>
+                                    <code>[Company]&lt;&gt;-1&gt;[Location]<br />[Location]+-&gt;[Office]</code>
+                                <p>
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Notes<p>
+                            </td>
+                            <td>
+                                <p>
+                                    <code>[Customer]&lt;&gt;1-*&gt;[Order]<br />[note: Aggregate Root {bg:cornsilk}]<br />[Customer]-[Aggregate Root]</code>
+                                <p>
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Inheritance<p>
+                            </td>
+                            <td>
+                                <p>
+                                    <code>[Wage]^-[Salaried]<br />[Wage]^-[Contractor]</code>
+                                <p>
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Interface Inheritance<p>
+                            </td>
+                            <td>
+                                <p>
+                                    <code>[&lt;&lt;ITask&gt;&gt;]^-.-[NightlyInvoicingTask]</code>
+                                <p>
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>International Characters<p>
+                            </td>
+                            <td>
+                                <p>
+                                    <code>[안녕하세요|हलो;你好;مرحبا]-&gt;[Köttbullar {bg:wheat}]</code>
+                                <p>
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Interface<p>
+                            </td>
+                            <td>
+                                <p>
+                                    <code>[&lt;&lt;IDisposable&gt;&gt;;UnitOfWork]</code>
+                                <p>
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Dependencies<p>
+                            </td>
+                            <td>
+                                <p>
+                                    <code>[HttpContext]uses -.-&gt;[Request]</code>
+                                <p>
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Class with Details<p>
+                            </td>
+                            <td>
+                                <p>
+                                    <code>[User|#counter;+Forename;+Surname;+HashedPassword;-Salt|+Login(user,pass);+Logout();+Register()]</code>
+                                <p>
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Something Meaty!<p>
+                            </td>
+                            <td>
+                                <p>
+                                    <code>[note: You can stick notes on diagrams too!{bg:wheat}]<br />[Customer]&lt;&gt;1-orders 0..*&gt;[Order]<br />[Order]++*-*&gt;[LineItem]<br />[Order]-1&gt;[DeliveryMethod]<br />[Order]*-*&gt;[Product]<br />[Category]&lt;-&gt;[Product]<br />[DeliveryMethod]^[National]<br />[DeliveryMethod]^[International]</code>
+                                <p>
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+</body>
+</html>

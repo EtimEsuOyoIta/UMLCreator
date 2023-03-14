@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>UML Creator - Draw</title>
+    <meta charset="utf-8">
+    <meta content="index, follow" name="robots">
+    <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <meta content="UML Creator is a tool for creating UML diagrams." name="description">
+    <meta content="Etim Esu Oyo-Ita" name="author">
+    <meta content="" property="og:url">
+    <meta content="UML Creator" property="og:title">
+    <meta content="UML Creator is a tool for creating UML diagrams." property="og:description">
+    <meta content="summary" name="twitter:card">
+    <meta content="@etimoyoita" name="twitter:site">
+    <meta content="@etimoyoita" name="twitter:creator">
+    <link href="../img/favicons/favicon.ico" rel="shortcut icon">
+    <link href="../img/favicons/favicon.png" rel="icon">
+    <link href="dist/spectre/spectre.min.css" rel="stylesheet">
+    <link href="dist/spectre/spectre-icons.min.css" rel="stylesheet">
+    <link href="dist/spectre/spectre-exp.min.css" rel="stylesheet">
+    <link href="dist/spectre/docs.min.css" rel="stylesheet">
+    <link href="dist/main.css" rel="stylesheet">
+
+    <script src="dist/yuml-diagram.min.js"></script>
+    <script>
+		var dtype = null;
+		var url = null;
+
+		function loadType() {
+            url = new URL(window.location.href);
+			let d = url.searchParams.get('d');
+			if (typeof d === 'string') {
+				dt = document.querySelector('#diagramType');
+				dt.setAttribute('disabled', 'disabled');
+				qq = document.querySelector('#diagramType > option[value=' + d + ']');
+				qq.setAttribute('selected', 'selected');
+				dtype = d;
+			}
+		}
+
+		function switchType() {
+			dtype = dtype || document.getElementById('diagramType').value;
+		}
+
+		function theSvg() {
+			var yumlText = "// {type:" + dtype + "}\n // {center:true}\n" + document.getElementById("yuml").value;
+
+			var yuml = new yuml_diagram();
+			var svg = yuml.processYumlDocument(yumlText, false);
+			return svg;
+		}
+
+		function loadSvg() {
+			const svg = theSvg();
+
+			document.getElementById("diag").innerHTML = svg;
+			document.getElementById("download").style.display = "block";
+
+			const svgData = 'data:image/svg+xml,' + encodeURIComponent(svg);
+
+			const meta = {
+				svg: svgData,
+				png: svgToFormat(svg, 'png'),
+				jpeg: svgToFormat(svg, 'jpeg')
+			};
+
+			document.getElementById("getPNG").setAttribute('href', meta.png);
+			document.getElementById("getSVG").setAttribute('href', meta.svg);
+
+		}
+
+		function svgToFormat(svg, format) {
+			format = format || 'png';
+			
+			const loadImage = url => {
+				const image = new Image;
+				image.src = url;
+				return image;
+			};
+			
+			const svgData = 'data:image/svg+xml,' + encodeURIComponent(svg);
+			const img = loadImage(svgData);
+			console.log("img", img);
+
+			const $canvas = document.createElement('canvas');
+			let hh = img.height;
+			let ww = img.width;
+			$canvas.height = hh;
+			$canvas.width = ww;
+			$canvas.getContext('2d').drawImage(img, 0, 0, ww, hh);
+
+			const mimeType = 'image/' + ((format == 'svg') ? 'svg+xml' : format);
+			const dataURL = $canvas.toDataURL(mimeType, 1.0);
+			
+			//console.log("dataURL", dataURL);
+			
+			return dataURL;
+		}
+
+		function downloadURL(format) {
+			const svg = theSvg();
+			const mimeType = 'image/' + ((format == 'svg') ? 'svg+xml' : format);
+			const svgData = 'data:' + format + ',' + encodeURIComponent(svg);
+
+			let dataURL = (format == 'svg') ? svgData : svgToFormat(svg, format);
+			let target = dataURL.replace(mimeType, "image/octet-stream"); //Convert image to 'octet-stream' (Just a download, really)
+			return target;
+		}
+    </script>
+</head>
+<body onload="loadType()">
+<div class="docs-container off-canvas off-canvas-sidebar-show">
+    <div class="off-canvas-content">
+        <div class="docs-content" id="content">
+            <div class="container" id="uml-creator">
+                <div class="docs-demo columns">
+                    <div class="column col-12 col-xs-12">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="index.html">UML Creator</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="index.html">Draw</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="column col-6 col-xs-12">
+                        <p>Using this tool is quite easy: put the right yUML script in, <strong>then click
+                            Draw.</strong> It comes highly recommended to take a look at the samples...</p>
+                        <div class="form-group">
+                            <div class="dropdown">
+                                <a class="btn btn-primary dropdown-toggle" href="#" tabindex="0">See Samples <i
+                                        class="icon icon-caret"></i></a>
+                                <ul class="menu">
+                                    <li class="menu-item"><a href="activity.html">Activity Diagrams</a></li>
+                                    <li class="menu-item"><a href="class.html">Class Diagrams</a></li>
+                                    <li class="menu-item"><a href="usecase.html">Use Case Diagrams</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="yuml">yUML Script:</label>
+                            <textarea class="form-input input-lg" id="yuml" rows="5"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="diagramType">What diagram?</label>
+                            <div class="input-group">
+                                <select class="form-select" id="diagramType" onchange="switchType();">
+                                    <option value="">Select Diagram Type</option>
+                                    <option value="activity">Activity Diagram</option>
+                                    <option value="class">Class Diagram</option>
+                                    <!--<option value="deployment">Deployment Diagram</option>
+                                    <option value="package">Package Diagram</option>
+                                    <option value="sequence">Sequence Diagram</option>
+                                    <option value="state">State Diagram</option>-->
+                                    <option value="usecase">Use Case Diagram</option>
+                                </select>
+                                <button class="btn btn-primary input-group-btn" onclick="loadSvg();">Draw</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column col-6 col-xs-12">
+                        <div class="dropdown" id="download">
+                            <a class="btn btn-primary dropdown-toggle" href="#" tabindex="0">Download... <i
+                                    class="icon icon-caret"></i></a>
+                            <ul class="menu">
+                                <li class="menu-item"><a download href="" id="getSVG">As SVG</a></li>
+                                <li class="menu-item"><a download href="" id="getPNG">As PNG</a></li>
+                            </ul>
+                        </div>
+                        <div id="diag"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>UML Creator - Draw</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="UML Creator is a tool for creating UML diagrams.">
+    <meta name="author" content="Etim Esu Oyo-Ita">
+    <meta property="og:url" content="">
+    <meta property="og:title" content="UML Creator">
+    <meta property="og:description" content="UML Creator is a tool for creating UML diagrams.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@etimoyoita">
+    <meta name="twitter:creator" content="@etimoyoita">
+    <link rel="shortcut icon" href="../img/favicons/favicon.ico">
+    <link rel="icon" href="../img/favicons/favicon.png">
+    <link rel="stylesheet" href="dist/spectre/spectre.min.css">
+    <link rel="stylesheet" href="dist/spectre/spectre-icons.min.css">
+    <link rel="stylesheet" href="dist/spectre/spectre-exp.min.css">
+    <link rel="stylesheet" href="dist/spectre/docs.min.css">
+
+    <script src="dist/yuml-diagram.min.js"></script>
+    <script>
+      var dtype = null;
+      var svg = null;
+
+      function loadType() {
+        var url = new URL(window.location.href);
+        let d = url.searchParams.get('d');
+        if (typeof d === 'string') {
+          dt = document.querySelector('#diagramType');
+          dt.setAttribute('disabled', 'disabled');
+          qq = document.querySelector('#diagramType > option[value=' + d + ']');
+          qq.setAttribute('selected', 'selected');
+          dtype = d;
+        }
+      }
+
+      function switchType() {
+        dtype = dtype || document.getElementById('diagramType').value;
+      }
+
+      function loadSvg()
+      {
+        var yumlText = "// {type:"+ dtype +"}\n // {center:true}\n" + document.getElementById("yuml").value;
+
+        var yuml  = new yuml_diagram();
+        svg = yuml.processYumlDocument(yumlText, false);
+        document.getElementById("diag").innerHTML = svg;
+
+        svgToPNG();
+      }
+
+      function svgToPNG() {
+        var svgData = new Blob([svg], {type: 'image/svg+xml'});
+        var DOMURL = window.URL || window.webkitURL || window;
+        var b64str = DOMURL.createObjectURL(svgData);
+
+        console.log(DOMURL, b64str);
+
+        /*const loadImage = (url) => new Promise((resolve, reject) => {
+          const img = new Image(); // alt: document.createElement('img')
+          img.addEventListener('load', () => resolve(img));
+          img.addEventListener('error', (err) => reject(err));
+          img.src = url;
+        });
+
+        var _img = await loadImage(b64str);
+        var imgH=_img.naturalHeight; // original file height
+        var imgW=_img.naturalWidth; // original file width
+
+        const scale = window.devicePixelRatio*2;
+        var _canvas = document.createElement('canvas');
+        _canvas.width=imgW;
+        _canvas.height=imgH;
+        var _ctx = _canvas.getContext('2d');
+        _canvas['style']['width'] = `${Math.round(imgW/scale)}px`;
+        _canvas['style']['height'] = `${Math.round(imgH/scale)}px`;
+        _canvas['style']['margin'] = '0';
+        _canvas['style']['padding'] = '0';
+        _ctx.scale(scale, scale);
+        _ctx.drawImage(_img, 0, 0, Math.round(imgW/scale), Math.round(imgH/scale));*/
+
+
+      }
+    </script>
+  </head>
+  <body onload="loadType()">
+    <div class="docs-container off-canvas off-canvas-sidebar-show">
+      <div class="off-canvas-content">
+        <div class="docs-content" id="content">
+          <div class="container" id="uml-creator">
+            <div class="docs-demo columns">
+              <div class="column col-12 col-xs-12">
+                <ul class="breadcrumb">
+                  <li class="breadcrumb-item">
+                    <a href="index.html">UML Creator</a>
+                  </li>
+                  <li class="breadcrumb-item">
+                    <a href="index.html">Draw</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="column col-6 col-xs-12">
+                <p>Using this tool is quite easy: put the right yUML script in, <strong>then click Draw.</strong> It comes highly recommended to take a look at the samples...</p>
+                <div class="form-group">
+                  <div class="dropdown">
+                    <a tabindex="0" class="btn btn-primary dropdown-toggle" href="#">See Samples  <i class="icon icon-caret"></i></a>
+                    <ul class="menu">
+                      <li class="menu-item"><a href="activity.html">Activity Diagrams</a></li>
+                      <li class="menu-item"><a href="class.html">Class Diagrams</a></li>
+                      <li class="menu-item"><a href="usecase.html">Use Case Diagrams</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="yuml">yUML Script:</label>
+                  <textarea rows="5" class="form-input input-lg" id="yuml"></textarea>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="diagramType">What diagram?</label>
+                  <div class="input-group">
+                    <select class="form-select" id="diagramType" onchange="switchType();">
+                      <option value="">Select Diagram Type</option>
+                      <option value="activity">Activity Diagram</option>
+                      <option value="class">Class Diagram</option>
+                      <!--<option value="deployment">Deployment Diagram</option>
+                      <option value="package">Package Diagram</option>
+                      <option value="sequence">Sequence Diagram</option>
+                      <option value="state">State Diagram</option>-->
+                      <option value="usecase">Use Case Diagram</option>
+                    </select>
+                    <button class="btn btn-primary input-group-btn" onclick="loadSvg();">Draw</button>
+                  </div>
+                </div>
+              </div>
+              <div class="column col-6 col-xs-12">
+                <div id="diag"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
